@@ -1,4 +1,5 @@
-import { useLayoutEffect, useRef, useCallback, ReactNode } from 'react';
+import { useLayoutEffect, useRef, useCallback } from 'react';
+import type { ReactNode } from 'react';
 import Lenis from 'lenis';
 import './ScrollStack.css';
 
@@ -132,9 +133,9 @@ export const ScrollStack = ({
 
       const entryProgress = calculateProgress(scrollTop, entryStart, entryEnd);
       
-      let assignedDir = directionMode;
+      let assignedDir: 'staggered' | 'left' | 'right' | 'bottom' | 'top' | 'custom' = directionMode;
       if (directionMode === 'custom') {
-        assignedDir = card.getAttribute('data-direction') || 'bottom';
+        assignedDir = (card.getAttribute('data-direction') as 'bottom' | 'top' | 'left' | 'right') || 'bottom';
       } else if (directionMode === 'staggered') {
         assignedDir = i % 2 === 0 ? 'left' : 'right';
       }
