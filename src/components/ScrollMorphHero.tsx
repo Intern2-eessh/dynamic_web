@@ -1,6 +1,15 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 
+import card1 from '../assets/card1.jpg';
+import card2 from '../assets/card2.jpg';
+import card3 from '../assets/card3.jpg';
+import card4 from '../assets/card4.jpg';
+import card5 from '../assets/card5.jpg';
+import card6 from '../assets/card6.jpg';
+
+const cardImages = [card1, card2, card3, card4, card5, card6];
+
 // Mock data for the telemetry blocks
 const telemetryItems = Array.from({ length: 20 }, (_, i) => ({
   id: `hero-${i}`,
@@ -9,7 +18,7 @@ const telemetryItems = Array.from({ length: 20 }, (_, i) => ({
   delay: Math.random() * 0.5,
 }));
 
-export function ScrollMorphHero() {
+export function ScrollMorphHero({ showContent = true }: { showContent?: boolean }) {
   const containerRef = useRef<HTMLDivElement>(null);
   
   // Track scroll progress within this 300vh container
@@ -63,15 +72,21 @@ export function ScrollMorphHero() {
           className="absolute z-20 text-center px-6 flex flex-col items-center"
           style={{ opacity: headlineOpacity, scale: headlineScale }}
         >
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter mb-6 leading-none mt-8">
-            Built for <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-primary to-primary/50">
-              Autonomous Hyperscale.
-            </span>
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl">
-            ElamaniTech develops and deploys industrial-scale autonomous systems engineered for next-generation manufacturing.
-          </p>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.6, y: 20 }}
+            animate={showContent ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.6, y: 20 }}
+            transition={{ duration: 0.8, delay: 0.2, type: "spring", bounce: 0.6 }}
+          >
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter mb-6 leading-none mt-8">
+              Built for <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-primary to-primary/50">
+                Autonomous Hyperscale.
+              </span>
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-center">
+              ElamaniTech develops and deploys industrial-scale autonomous systems engineered for next-generation manufacturing.
+            </p>
+          </motion.div>
         </motion.div>
 
 
@@ -150,35 +165,31 @@ export function ScrollMorphHero() {
             return (
               <motion.div
                 key={item.id}
-                className="absolute w-32 h-24 bg-black/60 backdrop-blur-md rounded-xl border flex flex-col justify-between p-3"
+                className="absolute"
                 style={{
                   x,
                   y,
                   z,
                   rotateZ,
                   scale,
-                  borderColor,
                   opacity,
                   transformStyle: 'preserve-3d',
                   transformOrigin: 'center center'
                 }}
               >
-                {/* Telemetry Block Content */}
-                <div className="flex justify-between items-center w-full">
-                   <div className="text-[10px] text-white/50 font-mono tracking-wider uppercase">{item.title}</div>
-                   <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
-                </div>
-                
-                {/* Simulated Radar/Data visual */}
-                <div className="flex-1 w-full flex items-center justify-center my-1 relative">
-                  <div className="w-full h-[1px] bg-white/20 absolute top-1/2 -translate-y-1/2" />
-                  <div className="h-full w-[1px] bg-white/20 absolute left-1/2 -translate-x-1/2" />
-                  <div className="w-4 h-4 border border-primary/50 rounded-full" />
-                </div>
-
-                <div className="text-[9px] text-primary font-mono text-right">
-                  {item.detail}
-                </div>
+                <motion.div
+                  className="w-32 h-24 rounded-xl border overflow-hidden shadow-xl"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={showContent ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
+                  transition={{ delay: 0.8 + i * 0.05, duration: 0.8, type: "spring" }}
+                  style={{ borderColor }}
+                >
+                  <img 
+                    src={cardImages[i % cardImages.length]} 
+                    alt={`Telemetry visual ${i + 1}`} 
+                    className="w-full h-full object-cover" 
+                  />
+                </motion.div>
               </motion.div>
             );
           })}

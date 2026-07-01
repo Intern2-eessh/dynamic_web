@@ -1,0 +1,164 @@
+.why-section {
+  position: relative;
+  width: 100%;
+  padding: 8rem 1.5rem;
+  background-color: hsl(var(--background));
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.why-card {
+  /* 1. Color Palette & Variables */
+  --white: hsl(0, 0%, 100%);
+  --paragraph: hsl(0, 0%, 80%);
+  --black: hsl(220, 15%, 10%);
+  --line: hsl(220, 10%, 20%);
+  --primary: hsl(175, 90%, 50%);
+
+  /* 2. Layout & Card Structure */
+  position: relative;
+  width: 100%;
+  max-width: 26rem; /* Slightly larger than 19rem to comfortably fit the extensive text */
+  padding: 2rem; /* 1rem requested, bumped up for better breathing room */
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* 1rem requested */
+  
+  /* Inner Depth Top Rim */
+  box-shadow: inset 0px 16px 24px 0px rgba(255, 255, 255, 0.05), 0 20px 40px rgba(0,0,0,0.4);
+  z-index: 1;
+}
+
+.why-card-inner {
+  position: absolute;
+  inset: 0px;
+  border-radius: 1rem;
+  z-index: -1;
+  background: 
+    radial-gradient(circle at 100% 100%, hsla(175, 90%, 50%, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 0% 100%, hsla(150, 80%, 70%, 0.1) 0%, transparent 50%),
+    var(--black);
+}
+
+/* 3. Animated Continuous Glowing Border */
+.why-card-border {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 1.1rem;
+  z-index: -2;
+  overflow: hidden;
+  background: var(--black);
+}
+
+.why-card-border::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 10rem;
+  background: linear-gradient(to right, transparent, var(--primary), transparent);
+  transform-origin: center;
+  animation: spin 8s linear infinite;
+  translate: -50% -50%;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 4. Typography & Content Elements */
+.why-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.why-title {
+  color: var(--white);
+  font-size: 1.5rem; /* 1rem requested, increased for better visual hierarchy */
+  font-weight: 700;
+}
+
+.why-desc {
+  color: var(--paragraph);
+  font-size: 0.9rem; /* 0.5rem requested, increased for readability */
+  line-height: 1.5;
+  width: 80%; /* 65% requested, 80% looks better for this copy */
+}
+
+.why-divider {
+  width: 100%;
+  height: 0.1rem;
+  background-color: var(--line);
+  border: none;
+}
+
+.why-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* 0.5rem requested */
+}
+
+.why-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.why-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem; /* 1rem requested */
+  height: 1.25rem;
+  border-radius: 50%;
+  background-color: var(--primary);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.why-check svg {
+  width: 0.75rem;
+  height: 0.75rem;
+  color: var(--black);
+  stroke-width: 3px;
+}
+
+.why-feature-text {
+  color: var(--white);
+  font-size: 0.95rem; /* 0.75rem requested */
+  line-height: 1.5;
+}
+
+/* 5. Call-To-Action Button */
+.why-button {
+  width: 100%;
+  padding: 0.85rem;
+  border-radius: 9999px;
+  border: none;
+  background: linear-gradient(to top, hsl(175, 90%, 40%), hsl(175, 90%, 65%));
+  color: var(--white);
+  font-weight: bold;
+  font-size: 0.9rem; /* 0.75rem requested */
+  cursor: pointer;
+  /* Glossy Finish */
+  box-shadow: inset 0 -2px 25px -4px rgba(255, 255, 255, 0.6), 0 5px 15px rgba(44, 181, 160, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: 0.5rem;
+}
+
+.why-button:hover {
+  transform: translateY(-2px);
+  box-shadow: inset 0 -2px 25px -4px rgba(255, 255, 255, 0.8), 0 8px 20px rgba(44, 181, 160, 0.5);
+}

@@ -21,8 +21,8 @@ export function Interactive3D() {
           <div className="flex h-full flex-col-reverse md:flex-row">
             {/* Left content */}
             <div className="flex-1 p-8 md:p-16 relative z-10 flex flex-col justify-center">
-              <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60 mb-6">
-                Interactive Robotics <br/><span className="text-primary">Simulation</span>
+              <h2 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#2cb5a0] via-gray-300 to-white mb-6">
+                Interactive Robotics <br/>Simulation
               </h2>
               <p className="mt-4 text-white/70 max-w-lg text-lg leading-relaxed">
                 Bring our industrial fleets to life in full 3D space. Manipulate viewports, orbit around the chassis, and explore the kinematic engineering right from your browser.
