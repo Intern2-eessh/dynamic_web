@@ -16,11 +16,12 @@ export function Header() {
   }, []);
 
   const navLinks = [
-    { name: 'Company', href: '#' },
-    { name: 'Robotics & Systems', href: '#robotics-systems' },
-    { name: 'Research & Insights', href: '#' },
-    { name: 'Investors', href: '#' },
-    { name: 'Careers', href: '#' },
+    { name: 'About', href: '#about-section' },
+    { name: 'Vision & Mission', href: '#vision-mission' },
+    { name: 'Achievements', href: '#achievements-section' },
+    { name: 'Founder\'s Desk', href: '#founder-desk' },
+    { name: 'Our Solutions', href: '#our-solutions' },
+    { name: 'Why Elamani Tech?', href: '#why-elamani' },
   ];
 
   return (
@@ -30,12 +31,15 @@ export function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <Logo className="w-10 h-10" />
-          <span className="text-xl font-bold tracking-tight text-white">ElamaniTech</span>
+          <div className="flex flex-col justify-center">
+            <span className="text-2xl font-bold tracking-tight bg-gradient-to-r from-[#2cb5a0] via-gray-300 to-white text-transparent bg-clip-text leading-none">ElamaniTech</span>
+            <span className="text-[10px] text-white/50 tracking-[0.2em] uppercase mt-1 leading-none">Engineering Intelligence</span>
+          </div>
         </div>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -46,21 +50,21 @@ export function Header() {
                   document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="text-sm text-foreground/80 hover:text-white transition-colors"
+              className="text-[0.999rem] font-medium text-foreground/80 hover:text-[#2cb5a0] transition-all duration-200 hover:scale-[1.15] inline-block"
             >
               {link.name}
             </a>
           ))}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <button className="bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-full text-sm font-medium transition-all shadow-[0_0_15px_rgba(14,165,233,0.3)] hover:shadow-[0_0_25px_rgba(14,165,233,0.5)]">
             Contact Us
           </button>
         </div>
 
         <button
-          className="md:hidden text-white"
+          className="lg:hidden text-white"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X /> : <Menu />}
@@ -69,7 +73,7 @@ export function Header() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-background border-b border-white/10 py-4 px-6 flex flex-col gap-4 shadow-xl">
+        <div className="lg:hidden absolute top-full left-0 w-full bg-background border-b border-white/10 py-4 px-6 flex flex-col gap-4 shadow-xl">
           {navLinks.map((link) => (
             <a
               key={link.name}

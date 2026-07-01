@@ -5,7 +5,7 @@ export function Footer() {
   const links = [
     {
       title: "Solutions",
-      items: ["Systems & Fleet", "Enterprise Integration", "Custom Workloads"],
+      items: ["Core Research & Development", "Innovative Ideas", "Custom Automation"],
     },
     {
       title: "Resources",
@@ -60,7 +60,7 @@ export function Footer() {
           <div className="col-span-2 lg:col-span-2">
             <div className="flex items-center gap-2 mb-6">
               <Logo className="w-9 h-9" />
-              <span className="text-xl font-bold tracking-tight text-white">ElamaniTech</span>
+              <span className="text-xl font-bold tracking-tight bg-gradient-to-r from-[#2cb5a0] via-gray-300 to-white text-transparent bg-clip-text">ElamaniTech</span>
             </div>
             <p className="text-muted-foreground mb-8 max-w-sm">
               Rapidly scaling the intelligent robotics capabilities of today, to power the automated potential of tomorrow.

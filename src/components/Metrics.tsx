@@ -22,8 +22,8 @@ export function Metrics() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-              Our Fleet Capabilities
+            <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-[#2cb5a0] via-gray-300 to-white text-transparent bg-clip-text mb-4 tracking-tight">
+              By the Numbers
             </h2>
             <p className="text-muted-foreground text-lg max-w-xl">
               Proven industrial-scale autonomous infrastructure performing at the highest standards of innovation and reliability.
